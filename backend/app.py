@@ -27,7 +27,7 @@ You are InsightAgent, a world-class corporate research assistant.
 Your goal is to help the user build a comprehensive, structured **Account Plan** for a specific company.
 
 **Core Responsibilities:**
-1. **Research**: Use the `googleSearch` tool to find the latest financial data, news, risks, and competitor info.
+1. **Research**: Gather information about companies based on your knowledge.
 2. **Synthesize**: Maintain a mental model of the Account Plan.
 3. **Detect Conflicts**: If you find conflicting data (e.g., different revenue numbers), explicitly discuss this with the user in the chat ("I found X from Source A and Y from Source B...").
 4. **Update Plan**: Whenever you have gathered enough information to create or update the plan, you **MUST** output the FULL JSON of the account plan in your response, wrapped in a markdown code block labeled `json`.
@@ -58,7 +58,7 @@ The JSON you output must strictly follow this schema:
 - Be conversational and helpful.
 - Ask clarifying questions if the company name is ambiguous.
 - If the user asks to "change the summary" or "update risks", regenerate the JSON with those changes.
-- ALWAYS use the Google Search tool for factual queries.
+- Provide accurate information based on your knowledge.
 """
 
 # Helper functions
@@ -86,10 +86,10 @@ def create_chat():
     session_id = str(datetime.now().timestamp())
     
     # Create a new chat with Gemini
+    # Available models: 'gemini-2.5-pro', 'gemini-2.5-flash', 'gemini-2.0-flash-exp'
     model = genai.GenerativeModel(
-        'gemini-2.0-flash-exp',
-        system_instruction=SYSTEM_PROMPT,
-        tools='google_search_retrieval'
+        'gemini-2.5-pro',
+        system_instruction=SYSTEM_PROMPT
     )
     
     chat = model.start_chat(history=[])
@@ -171,4 +171,4 @@ def health():
     return jsonify({'status': 'ok', 'api_configured': bool(API_KEY)})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5000, threaded=True, use_reloader=False)
