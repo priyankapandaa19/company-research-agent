@@ -7,7 +7,7 @@
 2. Click "New +" → "Web Service"
 3. Connect your GitHub repository
 4. Render will auto-detect settings from `render.yaml`
-5. Add environment variable: `GEMINI_API_KEY` = `AIzaSyC_JihIHNVfDL3ni-HvZi3qV0ai_Edq-jg`
+5. Add environment variable: `GEMINI_API_KEY` = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 6. Click "Create Web Service"
 
 ### Frontend (Vercel)
