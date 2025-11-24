@@ -128,12 +128,7 @@ Frontend will run on http://localhost:3000
 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 
 **Quick Deploy Options:**
-- **Backend**: Render, Railway, or Heroku
-- **Frontend**: Vercel, Netlify, or Railway
+- **Backend**: Render or Railway
+- **Frontend**: Vercel ,Netlify, or Railway
 
-## Notes
 
-- The backend uses in-memory session storage (use Redis for production)
-- API key is already configured in the `.env` file
-- Make sure both servers are running for full functionality
-- For production, set `VITE_API_URL` environment variable in frontend to point to your deployed backend
